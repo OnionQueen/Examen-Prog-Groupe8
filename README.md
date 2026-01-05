@@ -3,7 +3,7 @@ $Lucas, Christus, Mouad, Thomas$
 
 **description**
 
-[Lien vers le notebook choisi (Hearth Disease)](ttps://www.kaggle.com/datasets/redwankarimsony/heart-disease-data)
+[Lien vers le notebook choisi (Hearth Disease)](https://www.kaggle.com/datasets/redwankarimsony/heart-disease-data)
 
 ### Problèmes rencontrés
 (explication)
