@@ -8,6 +8,12 @@ $Lucas, Christus, Mouad, Thomas$
 
 ### Contenu
 
+### Stratégie
+
+- La branche `main` contient le code source final du projet.
+- La branche `dev` contient les commits et les merges de nos branches respectives.
+- Les autres branches sont des features ou des ajouts secondaires.
+
 #### Structure du projet
 
 <pre>
@@ -52,10 +58,6 @@ Examen-Prog-Groupe8/
     - reversible defect.
 - `num` (l'attribut prédit)
 
-### Problèmes rencontrés
-
-(explication)
-
 ### Installation
 
 #### Mac/Linux
@@ -78,17 +80,6 @@ python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
 ```
 
-### Résultats
-
-GridSearchCV a été utilisé afin d’explorer différentes configurations
-d’hyperparamètres du Gradient Boosting à l’aide d’une validation croisée.
-Les résultats montrent que le modèle baseline était déjà proche de l’optimum,
-ce qui confirme la pertinence du choix initial des paramètres.
-
-### Résumé
-
-(description)
-
 ### 1. Analyse Exploratoire (EDA)
 
 Notebook : `notebooks/eda.ipynb`
@@ -107,7 +98,7 @@ Les conclusions de l’EDA guident les choix de preprocessing et de modélisatio
 
 ### 2. Preprocessing
 
-Notebook : `notebooks/pre_processing2.0.ipynb`
+Notebook : `notebooks/pre_processing.ipynb`
 
 Un pipeline de preprocessing est mis en place afin de :
 
@@ -128,7 +119,7 @@ Le preprocessing est réalisé à l’aide de :
 
 ### 3. Modélisation
 
-Notebook : `notebooks/modeling2.0.ipynb`
+Notebook : `notebooks/modeling.ipynb`
 
 Plusieurs modèles de classification sont entraînés et comparés à l’aide d’un pipeline commun :
 
@@ -162,6 +153,17 @@ Le modèle optimisé présente de meilleures performances que la version par dé
 ### Modèle final
 
 Le **Gradient Boosting optimisé** est retenu comme modèle final pour la prédiction de maladies cardiaques.
+
+### Résultats
+
+GridSearchCV a été utilisé afin d’explorer différentes configurations
+d’hyperparamètres du Gradient Boosting à l’aide d’une validation croisée.
+Les résultats montrent que le modèle baseline était déjà proche de l’optimum,
+ce qui confirme la pertinence du choix initial des paramètres.
+
+### Résumé
+
+(description)
 
 ### Limites et pistes d'amélioration
 
