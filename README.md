@@ -6,7 +6,7 @@ $Lucas, Christus, Mouad, Thomas$
 
 [Lien vers le notebook choisi (Heart Disease)](https://www.kaggle.com/datasets/redwankarimsony/heart-disease-data)
 
-### Contenu
+## Contenu
 
 ### Stratégie
 
@@ -20,14 +20,14 @@ $Lucas, Christus, Mouad, Thomas$
 Examen-Prog-Groupe8/
 │
 ├── notebooks/
-│ ├── eda.ipynb # Analyse exploratoire des données
-│ ├── pre_processing.ipynb # Preprocessing et pipeline
-│ ├── modeling.ipynb # Entraînement et comparaison des modèles
-│ └── tuning.ipynb # Optimisation des hyperparamètres
+│ ├── eda.ipynb             # Analyse exploratoire des données
+│ ├── pre_processing.ipynb  # Preprocessing et pipeline
+│ ├── modeling.ipynb        # Entraînement et comparaison des modèles
+│ └── tuning.ipynb          # Optimisation des hyperparamètres
 │
-├── dataset.csv # Jeu de données
-├── requirements.txt # Dépendances Python
-└── README.md # Documentation du projet
+├── dataset.csv             # Jeu de données
+├── requirements.txt        # Dépendances Python
+└── README.md               # Documentation du projet
 </pre>
 
 #### Description des colones :
@@ -58,7 +58,11 @@ Examen-Prog-Groupe8/
     - reversible defect.
 - `num` (l'attribut prédit)
 
-### Installation
+## Installation
+
+#### Prérequis
+
+- Python ≥ 3.8
 
 #### Mac/Linux
 
@@ -69,8 +73,6 @@ python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
 ```
 
----
-
 #### Windows
 
 ```
@@ -80,7 +82,18 @@ python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
 ```
 
-### 1. Analyse Exploratoire (EDA)
+## Reproduire les résultats
+
+L’ordre recommandé d’exécution des notebooks est le suivant :
+
+1. notebooks/eda.ipynb
+2. notebooks/pre_processing.ipynb
+3. notebooks/modeling.ipynb
+4. notebooks/tuning.ipynb
+
+Les seeds aléatoires sont fixées afin d’assurer la reproductibilité des résultats.
+
+## 1. Analyse Exploratoire (EDA)
 
 Notebook : `notebooks/eda.ipynb`
 
@@ -94,9 +107,17 @@ Cette étape permet :
 
 Les conclusions de l’EDA guident les choix de preprocessing et de modélisation.
 
+#### Insight clés
+
+- Certaines variables cliniques (cp, thalach, oldpeak) sont fortement liées à la cible.
+- Présence de valeurs manquantes sur quelques colonnes nécessitant un traitement spécifique.
+- Peu de multicolinéarité critique après analyse des corrélations.
+
+Ces observations ont directement influencé les choix de preprocessing et de modélisation.
+
 ---
 
-### 2. Preprocessing
+## 2. Preprocessing
 
 Notebook : `notebooks/pre_processing.ipynb`
 
@@ -117,7 +138,7 @@ Le preprocessing est réalisé à l’aide de :
 
 ---
 
-### 3. Modélisation
+## 3. Modélisation
 
 Notebook : `notebooks/modeling.ipynb`
 
@@ -129,14 +150,14 @@ Plusieurs modèles de classification sont entraînés et comparés à l’aide d
 
 Les performances sont évaluées à l’aide de :
 
-- l’accuracy
-- le F1-score pondéré
+- Accuracy
+- F1-score pondéré
 
 Le **Gradient Boosting** obtient les meilleurs résultats globaux et est retenu pour l’optimisation.
 
 ---
 
-### 4. Optimisation des hyperparamètres
+## 4. Optimisation des hyperparamètres
 
 Notebook : `notebooks/tuning.ipynb`
 
@@ -148,24 +169,32 @@ Les hyperparamètres optimisés incluent :
 - `learning_rate`
 - `max_depth`
 
-Le modèle optimisé présente de meilleures performances que la version par défaut.
+#### Résultat :
 
-### Modèle final
+- Amélioration marginale mais cohérente des performances.
+- Le modèle baseline était déjà proche de l’optimum, validant les choix initiaux.
+- Le tuning permet de stabiliser et généraliser le modèle.
+
+## Modèle final
 
 Le **Gradient Boosting optimisé** est retenu comme modèle final pour la prédiction de maladies cardiaques.
 
-### Résultats
+## Analyse d'erreur
+
+- Les cas atypiques ou peu représentés sont plus difficiles à classifier.
+- Une augmentation de données ou des variables supplémentaires pourraient améliorer la performance.
+
+## Limites
+
+- Absence de certaines variables médicales détaillées.
+
+## Résultats
 
 GridSearchCV a été utilisé afin d’explorer différentes configurations
 d’hyperparamètres du Gradient Boosting à l’aide d’une validation croisée.
 Les résultats montrent que le modèle baseline était déjà proche de l’optimum,
 ce qui confirme la pertinence du choix initial des paramètres.
 
-### Résumé
+## Références
 
-(description)
-
-### Limites et pistes d'amélioration
-
-### Références
-
+- Dataset Kaggle — Heart Disease UCI
