@@ -4,11 +4,34 @@ $Lucas, Christus, Mouad, Thomas$
 
 **description**
 
-[Lien vers le notebook choisi (Heart Disease)](https://www.kaggle.com/datasets/redwankarimsony/heart-disease-data)
+[Lien vers le dataset choisi (Heart Disease)](https://www.kaggle.com/datasets/redwankarimsony/heart-disease-data)
 
-### Contenu
+## Contenu
+
+### Stratégie
+
+- La branche `main` contient le code source final du projet.
+- La branche `dev` contient les commits et les merges de nos branches respectives.
+- Les autres branches sont des features ou des ajouts secondaires.
+
+#### Structure du projet
+
+<pre>
+Examen-Prog-Groupe8/
+│
+├── notebooks/
+│ ├── eda.ipynb             # Analyse exploratoire des données
+│ ├── pre_processing.ipynb  # Preprocessing et pipeline
+│ ├── modeling.ipynb        # Entraînement et comparaison des modèles
+│ └── tuning.ipynb          # Optimisation des hyperparamètres
+│
+├── dataset.csv             # Jeu de données
+├── requirements.txt        # Dépendances Python
+└── README.md               # Documentation du projet
+</pre>
 
 #### Description des colones :
+
 - `id` (id unique pour chaque patient)
 - `age` (Age des patients en années)
 - `origin` (Origine des patients)
@@ -35,11 +58,11 @@ $Lucas, Christus, Mouad, Thomas$
     - reversible defect.
 - `num` (l'attribut prédit)
 
-### Problèmes rencontrés
+## Installation
 
-(explication)
+#### Prérequis
 
-### Installation
+- Python ≥ 3.8
 
 #### Mac/Linux
 
@@ -50,8 +73,6 @@ python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
 ```
 
----
-
 #### Windows
 
 ```
@@ -61,31 +82,119 @@ python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
 ```
 
-### Résultats
+## Reproduire les résultats
 
-(afficher des résultats, ordre d'exécution des scripts)
+L’ordre recommandé d’exécution des notebooks est le suivant :
 
-### Résumé
+1. notebooks/eda.ipynb
+2. notebooks/pre_processing.ipynb
+3. notebooks/modeling.ipynb
+4. notebooks/tuning.ipynb
 
-(description)
+Les seeds aléatoires sont fixées afin d’assurer la reproductibilité des résultats.
 
-#### EDA
+## 1. Analyse Exploratoire (EDA)
 
-(explication)
+Notebook : `notebooks/eda.ipynb`
 
-#### Modélisation
+Cette étape permet :
 
-(modèle, tableau, etc)
+- d’explorer la structure des données,
+- d’identifier les valeurs manquantes,
+- d’analyser les distributions et les valeurs extrêmes,
+- d’étudier les relations entre variables et la cible,
+- d’analyser les corrélations entre variables numériques.
 
-### Résultats
+Les conclusions de l’EDA guident les choix de preprocessing et de modélisation.
 
-(explication)
+#### Insight clés
 
-### Analyse d'erreurs
+- Certaines variables cliniques (cp, thalach, oldpeak) sont fortement liées à la cible.
+- Présence de valeurs manquantes sur quelques colonnes nécessitant un traitement spécifique.
+- Peu de multicolinéarité critique après analyse des corrélations.
 
-(explication)
+Ces observations ont directement influencé les choix de preprocessing et de modélisation.
 
-### Limites et pistes d'amélioration
+---
 
-### Références
+## 2. Preprocessing
 
+Notebook : `notebooks/pre_processing.ipynb`
+
+Un pipeline de preprocessing est mis en place afin de :
+
+- gérer les valeurs manquantes,
+- encoder les variables catégorielles,
+- standardiser les variables numériques,
+- éviter toute fuite de données.
+
+Le preprocessing est réalisé à l’aide de :
+
+- `Pipeline`
+- `ColumnTransformer`
+- `SimpleImputer`
+- `StandardScaler`
+- `OneHotEncoder`
+
+---
+
+## 3. Modélisation
+
+Notebook : `notebooks/modeling.ipynb`
+
+Plusieurs modèles de classification sont entraînés et comparés à l’aide d’un pipeline commun :
+
+- **Régression Logistique** (baseline)
+- **Random Forest**
+- **Gradient Boosting**
+
+Les performances sont évaluées à l’aide de :
+
+- Accuracy
+- F1-score pondéré
+
+Le **Gradient Boosting** obtient les meilleurs résultats globaux et est retenu pour l’optimisation.
+
+---
+
+## 4. Optimisation des hyperparamètres
+
+Notebook : `notebooks/tuning.ipynb`
+
+Le modèle Gradient Boosting est optimisé à l’aide de **GridSearchCV** avec validation croisée.
+
+Les hyperparamètres optimisés incluent :
+
+- `n_estimators`
+- `learning_rate`
+- `max_depth`
+
+#### Résultat :
+
+- Amélioration marginale mais cohérente des performances.
+- Le modèle baseline était déjà proche de l’optimum, validant les choix initiaux.
+- Le tuning permet de stabiliser et généraliser le modèle.
+
+## Modèle final
+
+Le **Gradient Boosting optimisé** est retenu comme modèle final pour la prédiction de maladies cardiaques.
+
+## Analyse d'erreur
+
+- Les cas atypiques ou peu représentés sont plus difficiles à classifier.
+- Une augmentation de données ou des variables supplémentaires pourraient améliorer la performance.
+
+## Limites
+
+- Absence de certaines variables médicales détaillées.
+
+## Résultats
+
+GridSearchCV a été utilisé afin d’explorer différentes configurations
+d’hyperparamètres du Gradient Boosting à l’aide d’une validation croisée.
+Les résultats montrent que le modèle baseline était déjà proche de l’optimum,
+ce qui confirme la pertinence du choix initial des paramètres.
+
+## Références
+
+- Dataset Kaggle — Heart Disease UCI
