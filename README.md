@@ -4,7 +4,7 @@ $Lucas, Christus, Mouad, Thomas$
 
 **description**
 
-[Lien vers le notebook choisi (Heart Disease)](https://www.kaggle.com/datasets/redwankarimsony/heart-disease-data)
+[Lien vers le dataset choisi (Heart Disease)](https://www.kaggle.com/datasets/redwankarimsony/heart-disease-data)
 
 ## Contenu
 
